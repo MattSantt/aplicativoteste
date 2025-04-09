@@ -1,57 +1,57 @@
 <?php
-$cont = 1;
+$aluno = 1;
 $reprovados = 0;
 $aprovados = 0;
 $exame = 0;
 
 function notas($aluno, $nota1, $nota2){
-			$nota1 = $nota1;
-			$nota2 = $nota2;
-
+	
 			$media = ($nota1 + $nota2)/2;
+            
+            echo "a media do aluno $aluno é $media</br>";	
 			
-			if($media < 0 ){
-				echo "nota invalida</br>";
+			if($media < 0 || $media > 10){
+				echo "nota invalida<br><br>";
 			}elseif($media <= 3) {
-				echo "Reprovado</br>";
+				echo "o aluno $aluno foi Reprovado<br><br>";
 				global $reprovados;
 				$reprovados++;
 			}elseif($media > 3 && $media <= 7){
-				echo "Exame</br>";
+				echo "o aluno $aluno foi para o Exame<br><br>";
+                global $exame;
+                $exame++;
 			}elseif($media > 7){
-				echo "Aprovado</br>";
+				echo "o aluno $aluno foi Aprovado<br><br>";
+                global $aprovados;
+                $aprovados++;
 			}
-
-			echo "a media do aluno $aluno é $media</br></br>";	
 }
 
-while ($cont <= 6) {
-	if($cont == 1){
-		notas($cont, 3, 4);
+while ($aluno <= 6) {
+	if($aluno == 1){
+		notas($aluno, 8, 10);
 	}
-		if($cont == 1){
-		notas($cont, 10, 8);
+		if($aluno == 2){
+		notas($aluno, 10, 8);
 	}
-		if($cont == 2){
-		notas($cont, 7, 4);
+		if($aluno == 3){
+		notas($aluno, 7, 4);
 	}
-		if($cont == 3){
-		notas($cont, 8, 4);
+		if($aluno == 4){
+		notas($aluno, 8, 4);
 	}
-		if($cont == 4){
-		notas($cont, 2, 4);
+		if($aluno == 5){
+		notas($aluno, 2, 4);
 	}
-		if($cont == 5){
-		notas($cont, 0, 4);
-	}
-		if($cont == 6){
-		notas($cont, 1, 4);
+		if($aluno == 6){
+		notas($aluno, 0, 4);
 	}
 
-	$cont++;
+	$aluno++;
 }
 
-echo "Reprovados: ". $reprovados;
-echo "Aprovados". $aprovados;
+echo "Reprovados: $reprovados <br>";
+echo "Aprovados: $aprovados <br>";
+echo "Exame: $exame";
 
 ?>
